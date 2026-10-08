@@ -1,0 +1,76 @@
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0c0e14;
+    color: #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+/* Leaflet dark theme */
+.leaflet-container {
+  background-color: #0b0f19 !important;
+  font-family: inherit;
+  z-index: 10;
+  border-radius: 1rem;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #111827 !important;
+  color: #f3f4f6 !important;
+  border: 1px solid #374151;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5) !important;
+  border-radius: 10px !important;
+}
+.leaflet-popup-content { margin: 12px 14px !important; line-height: 1.5 !important; }
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes emergency-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+  50%       { opacity: 0.9; box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+}
+@keyframes dot-ping {
+  0%    { transform: scale(1); opacity: 1; }
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+@keyframes glow-red {
+  0%,100% { box-shadow: 0 0 12px rgba(239,68,68,0.3); }
+  50%      { box-shadow: 0 0 28px rgba(239,68,68,0.6); }
+}
+
+.animate-fade-in   { animation: fade-in 0.3s ease-out; }
+.animate-slide-up  { animation: slide-up 0.4s ease-out; }
+.animate-emergency-pulse { animation: emergency-pulse 2s ease-in-out infinite; }
+.animate-glow-red  { animation: glow-red 2s ease-in-out infinite; }
+
+/* Glass card utility */
+.glass {
+  background: rgba(14, 18, 28, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
